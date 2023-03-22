@@ -14,7 +14,7 @@ f =Footer(root)
 s1 = Slide(root,
 title="",
 content="Baitul Ma'mur Academy",
-contentFont=212,
+contentFont=210,
 paddingCtop=27.5
 )
 hijri = Gregorian(int(datetime.now().year), datetime.now().month, datetime.now().day).to_hijri()
