@@ -19,7 +19,7 @@ paddingCtop=27.5
 )
 hijri = Gregorian(int(datetime.now().year), datetime.now().month, datetime.now().day).to_hijri()
 
-if hijri.month_name() !="Ramadhan":
+if hijri.month_name() =="Ramadhan":
     try:
         openedImage = Image.open("images/Ramadan/"+str(hijri.day)+".jpg")
     except:
