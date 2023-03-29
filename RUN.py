@@ -34,11 +34,17 @@ if hijri.month_name() =="Ramadhan":
         imgHeight=round((height/width)*maxImgWidth)
     image = ImageTk.PhotoImage(openedImage.resize((imgWidth,imgHeight),Image.Resampling.LANCZOS))
     ramadanMessage = Slide(root,None,image=image,title="")
+    if hijri.day <= 12 and hijri.year == 1444:
+        gatheringSlide = Slide(root, title="Iftaar gathering this monday",titleFont=100,content="On monday 3rd of April (12th Ramadan),\nBaitul Mamur Academy would like to invite you to an iftaar gathering,\nPlease come and bring your friends & family to this barakah filled event\nWe look forward to seeing you all\nInsha'Allah",contentFont=65)
 
 
 s1.packSlide()
 
 slideshow.addAll([s1])
+try:
+    slideshow.add(gatheringSlide)
+except:
+    pass
 try:
     slideshow.add(ramadanMessage)
 except:
