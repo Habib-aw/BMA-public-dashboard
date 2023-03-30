@@ -17,6 +17,33 @@ content="Baitul Ma'mur Academy",
 contentFont=210,
 paddingCtop=27.5
 )
+
+spaces = "    "
+qrCode = ImageTk.PhotoImage(Image.open("images/BMA donate qr code.png").resize((890,890),Image.Resampling.LANCZOS))
+s2 = Slide(root,
+title="",
+content=spaces+"Please Donate by\n"+spaces+"following the QR code\n\n\n"+spaces+"Or donate via\n"+spaces+"the donate page\n"+spaces+"on the website",
+contentFont=60,
+image=qrCode,
+time=8
+)
+def fitImg(imgPath):
+    openedImage = Image.open("images/"+imgPath)
+    width, height = openedImage.size
+    maxImgWidth = 1900
+    maxImgHeight=875
+    imgWidth = round((width/height)*maxImgHeight)
+    imgHeight = maxImgHeight
+    if imgWidth>maxImgWidth:
+        imgWidth=maxImgWidth
+        imgHeight=round((height/width)*maxImgWidth)
+    return ImageTk.PhotoImage(openedImage.resize((imgWidth,imgHeight),Image.Resampling.LANCZOS))
+maktab1 = fitImg("Maktab.jpg")
+maktab2 = fitImg("Maktab1.JPG")
+
+m1 = Slide(root,None,image=maktab1,title="",time=10)
+m2 = Slide(root,None,image=maktab2,title="")
+
 hijri = Gregorian(int(datetime.now().year), datetime.now().month, datetime.now().day).to_hijri()
 
 if hijri.month_name() =="Ramadhan":
@@ -35,12 +62,12 @@ if hijri.month_name() =="Ramadhan":
     image = ImageTk.PhotoImage(openedImage.resize((imgWidth,imgHeight),Image.Resampling.LANCZOS))
     ramadanMessage = Slide(root,None,image=image,title="")
     if hijri.day <= 12 and hijri.year == 1444:
-        gatheringSlide = Slide(root, title="Iftaar gathering this monday",titleFont=100,content="On monday 3rd of April (12th Ramadan),\nBaitul Mamur Academy would like to invite you to an iftaar gathering,\nPlease come and bring your friends & family to this barakah filled event\nWe look forward to seeing you all\nInsha'Allah",contentFont=65)
+        gatheringSlide = Slide(root, title="Iftaar gathering this monday",titleFont=100,content="On monday 3rd of April (12th Ramadan),\nBaitul Mamur Academy would like to invite you to an iftaar gathering,\nPlease come and bring your friends & family to this barakah filled event\nWe look forward to seeing you all\nInsha'Allah",contentFont=65,time=10)
 
 
 s1.packSlide()
 
-slideshow.addAll([s1])
+slideshow.addAll([s1,s2,m1,m2])
 try:
     slideshow.add(gatheringSlide)
 except:
