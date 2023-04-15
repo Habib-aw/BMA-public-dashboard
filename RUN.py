@@ -61,6 +61,8 @@ if hijri.month_name() =="Ramadhan":
         imgHeight=round((height/width)*maxImgWidth)
     image = ImageTk.PhotoImage(openedImage.resize((imgWidth,imgHeight),Image.Resampling.LANCZOS))
     ramadanMessage = Slide(root,None,image=image,title="")
+    if hijri.day >25:
+        eidJamaahSlide = Slide(root,title="EID JAMA'AH",content="1st Jama'ah: 7:00 AM\n\n2nd Jama'ah: 8:30 AM\n\n3rd Jama'ah: 9:30 AM",contentFont=100,bg='black')
     if hijri.day <= 12 and hijri.year == 1444:
         gatheringSlide = Slide(root, title="Iftaar gathering this monday",titleFont=100,content="On monday 3rd of April (12th Ramadan),\nBaitul Mamur Academy would like to invite you to an iftaar gathering,\nPlease come and bring your friends & family to this barakah filled event\nWe look forward to seeing you all\nInsha'Allah",contentFont=65,time=10)
 
@@ -76,7 +78,10 @@ try:
     slideshow.add(ramadanMessage)
 except:
     pass
-
+try:
+    slideshow.add(eidJamaahSlide)
+except:
+    pass
 
 slideshow.redoTimes()
 root.config(bg=background)
