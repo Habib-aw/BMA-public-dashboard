@@ -45,7 +45,9 @@ m1 = Slide(root,None,image=maktab1,title="",time=10)
 m2 = Slide(root,None,image=maktab2,title="")
 
 hijri = Gregorian(int(datetime.now().year), datetime.now().month, datetime.now().day).to_hijri()
-
+if hijri.month_name() =="Dhu al-Hijjah":
+    if hijri.day <10 and hijri.day>3:
+        eidJamaahSlide = Slide(root,title="EID JAMA'AH",content="1st Jama'ah: 7:00 AM\n\n2nd Jama'ah: 8:30 AM\n\n3rd Jama'ah: 10:00 AM",contentFont=100,bg='black')
 if hijri.month_name() =="Ramadhan":
     try:
         openedImage = Image.open("images/Ramadan/"+str(hijri.day)+".jpg")
@@ -65,6 +67,8 @@ if hijri.month_name() =="Ramadhan":
         eidJamaahSlide = Slide(root,title="EID JAMA'AH",content="1st Jama'ah: 7:00 AM\n\n2nd Jama'ah: 8:30 AM\n\n3rd Jama'ah: 9:30 AM",contentFont=100,bg='black')
     if hijri.day <= 12 and hijri.year == 1444:
         gatheringSlide = Slide(root, title="Iftaar gathering this monday",titleFont=100,content="On monday 3rd of April (12th Ramadan),\nBaitul Mamur Academy would like to invite you to an iftaar gathering,\nPlease come and bring your friends & family to this barakah filled event\nWe look forward to seeing you all\nInsha'Allah",contentFont=65,time=10)
+if (hijri.month_name()=="Shawwal" and hijri.day ==1) or (hijri.month_name()=="Dhu al-Hijjah" and hijri.day==10):
+    eidMubarakSlide = Slide(root,title="",content="Eid Mubarak",contentFont=250,smallContent="TaqabbalAllahu Minna Wa Minkum",smallContentFont=50)
 
 
 s1.packSlide()
@@ -82,7 +86,10 @@ try:
     slideshow.add(eidJamaahSlide)
 except:
     pass
-
+try:
+    slideshow.add(eidMubarakSlide)
+except:
+    pass
 slideshow.redoTimes()
 root.config(bg=background)
 root.attributes('-fullscreen',True)
