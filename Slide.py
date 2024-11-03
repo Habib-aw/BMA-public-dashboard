@@ -30,15 +30,15 @@ class Slide:
 				self.smallContent = Label(self.inFrame,text=smallContent,font=('Arial',smallContentFont),fg=fg,bg=bg,wraplength=wraplength)
 				self.smallContent.pack()
 		elif content == None:
-			self.imageLabel = Label(self.inFrame,image=image)
+			self.imageLabel = Label(self.inFrame,image=image,borderwidth=0,highlightthickness=0)
 			self.imageLabel.pack()
 		else:
 			if wraplength == None:
-				wraplength=root.winfo_screenwidth()-700
+				wraplength=root.winfo_screenwidth()-500
 			self.content = Label(self.inFrame,text=content,font=('Arial',contentFont),fg=fg,bg=bg,wraplength=wraplength)
-			self.imageLabel = Label(self.inFrame,image=image)
-			self.imageLabel.pack(side='left')
-			self.content.pack(side='right')
+			self.imageLabel = Label(self.inFrame,image=image,borderwidth=0)
+			self.imageLabel.pack(side='top')
+			self.content.pack(side='bottom')
 		if title != None:
 			self.title = Label(self.frame,text=title,font=('Arial',titleFont,'underline','bold'),bg=bg,fg=fg)
 			self.title.pack(side="top")

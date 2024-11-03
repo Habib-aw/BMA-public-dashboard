@@ -11,21 +11,36 @@ root = Tk()
 slideshow =Slideshow(root)
 f =Footer(root)
 
+original_image = Image.open("images/logo.png").resize((500, 500), Image.Resampling.LANCZOS)
+
+# Create a new background image with the desired color and same size
+background_color = '#000037'
+background_image = Image.new("RGBA", original_image.size, background_color)
+
+# Paste the original image on top of the background image, preserving transparency
+background_image.paste(original_image, (0, 0), original_image)
+
+# Convert to a format Tkinter can use
+logo = ImageTk.PhotoImage(background_image)
 s1 = Slide(root,
 title="",
 content="Baitul Ma'mur Academy",
-contentFont=210,
-paddingCtop=27.5
+contentFont=150,
+image=logo,
+# paddingCtop=27.5
 )
 
 spaces = "    "
-qrCode = ImageTk.PhotoImage(Image.open("images/BMA donate qr code.png").resize((890,890),Image.Resampling.LANCZOS))
 s2 = Slide(root,
-title="",
-content=spaces+"Please Donate by\n"+spaces+"following the QR code\n\n\n"+spaces+"Or donate via\n"+spaces+"the donate page\n"+spaces+"on the website",
+title="Please donate to the Mosque to keep it running",
+content=spaces+"""Donate via online banking at
+Organisation name: 
+Baitul Mamur Academy
+Acc no. 31643290
+Sort code: 40-01-18""",
 contentFont=60,
-image=qrCode,
-time=8
+# image=qrCode,
+time=8,
 )
 def fitImg(imgPath):
     openedImage = Image.open("images/"+imgPath)
