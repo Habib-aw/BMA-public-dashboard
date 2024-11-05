@@ -43,7 +43,7 @@ class Footer:
         self.check = True
     def repeater(self):
         self.time = datetime.now().strftime('%I:%M:%S %p')
-        self.clock.config(text="07908015208 | "+self.time+" | www.baitulmamur.academy")
+        self.clock.config(text="07301766198 | "+self.time+" | www.baitulmamur.academy")
         if self.time == "12:00:00 AM":
             os.system("sudo reboot")
         schedule.run_pending()
