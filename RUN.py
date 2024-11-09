@@ -42,6 +42,17 @@ contentFont=60,
 # image=qrCode,
 time=8,
 )
+s3 = Slide(root,
+title="Enrolling Now",
+content=spaces+"""Evening Madrasah
+Monday - Thursday 5-7pm
+Please contact
+07301766198
+""",
+contentFont=90,
+titleFont=160,
+time=8,
+)
 def fitImg(imgPath):
     openedImage = Image.open("images/"+imgPath)
     width, height = openedImage.size
@@ -86,9 +97,9 @@ if (hijri.month_name()=="Shawwal" and hijri.day ==1) or (hijri.month_name()=="Dh
     eidMubarakSlide = Slide(root,title="",content="Eid Mubarak",contentFont=250,smallContent="TaqabbalAllahu Minna Wa Minkum",smallContentFont=50)
 
 
-s1.packSlide()
+s3.packSlide()
 
-slideshow.addAll([s1,s2,m1,m2])
+slideshow.addAll([s3,s2,s3,m1,m2])
 try:
     slideshow.add(gatheringSlide)
 except:
