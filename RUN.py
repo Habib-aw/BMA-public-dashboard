@@ -97,9 +97,9 @@ if (hijri.month_name()=="Shawwal" and hijri.day ==1) or (hijri.month_name()=="Dh
     eidMubarakSlide = Slide(root,title="",content="Eid Mubarak",contentFont=250,smallContent="TaqabbalAllahu Minna Wa Minkum",smallContentFont=50)
 
 
-s3.packSlide()
+s1.packSlide()
 
-slideshow.addAll([s3,s2,s3,m1,m2])
+slideshow.addAll([s1,s2,s3,m1,m2])
 try:
     slideshow.add(gatheringSlide)
 except:
